@@ -17,8 +17,8 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
       t.text   :address,            null: false, default: ""
       t.string :telephone_number,   null: false, default: ""
 
-      #会員ステータスカラム true =有効　false =退会済
-      t.boolean :is_enabled,        default: true, null: false
+      #退会ステータスカラム true =有効　false =退会済
+      t.boolean :is_deleted,        default: true, null: false
 
       ## Recoverable
       t.string   :reset_password_token
