@@ -1,16 +1,17 @@
 class CreateItems < ActiveRecord::Migration[6.1]
   def change
     create_table :items do |t|
-      # 外部キー 商品ジャンルのID
-      t.integer  :genre_id,    index: true, null: false, default: ""
+      # 外部キージャンルID
+      t.integer  :genre_id,    null: false, default: ""
 
       t.string   :name,        null: false, default: ""
-      t.text     :description
+      t.text     :description, null: false, default: ""
       t.integer  :price,       null: false, default: ""
 
-      # e_num設定 ０ = 販売可、１ = 販売不可　登録時は販売不可
-      t.integer  :sale_status, null: false, default: 1
+      #販売ステータス true =販売中　false =売切れ
+      t.boolean  :is_active,   null: false, default: true
 
+      #必要ないがモデル記述追加忘れないため
       t.string   :image_id
       t.timestamps
     end
