@@ -27,9 +27,16 @@ class Public::SessionsController < Devise::SessionsController
     ## アカウントを取得できなかった場合、このメソッドを終了する
     return if !@customer
     ## 【処理内容2】 取得したアカウントのパスワードと入力されたパスワードが一致してるかを判別
-    if @customer.valid_password?(params[:customer][:password])
+    if @customer.valid_password?(params[:customer][:password]) && (@customer.is_active == true)
       ## 【処理内容3】
+      #redirect_to customer_session_path
     end
+    
+    
+  end
+  
+  def after_sign_in_path_for(resource)
+    public_homes_top_path
   end
 
   # If you have extra params to permit, append them to the sanitizer.
