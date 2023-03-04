@@ -1,3 +1,4 @@
+<!--ヘッダー-->
 <!DOCTYPE html>
 <html>
   <head>
@@ -12,11 +13,45 @@
 
   <body>
     <header>
-      <% if customer_signed_in? %>
+      <% if admin_signed_in? %>
+        <!--管理者ログイン後ヘッダー-->
+        <li>
+          <%= link_to "商品一覧", admin_items_index_path %>
+        </li>
+        <li>
+          <%= link_to "会員一覧", admin_customers_index_path %>
+        </li>
+        <li>
+          <%= link_to "注文履歴一覧", admin_orders_show_path %>
+        </li>
+        <li>
+          <%= link_to "ジャンル一覧", admin_genres_index_path %>
+        </li>
+        <li>
+          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+        </li>
+      <% elsif customer_signed_in? %>
+        <!--会員ログイン後ヘッダー-->
+        <li>
+          <%= link_to "マイページ", customers_show_path %>
+        </li>
+        <li>
+          <%= link_to "商品一覧", items_show_path %>
+        </li>
+        <li>
+          <%= link_to "カート", cart_items_index_path %>
+        </li>
         <li>
           <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
         </li>
       <% else %>
+        <!--会員・管理者ログイン前ヘッダー-->
+        <li>
+          <%= link_to "About", homes_about_path %>
+        </li>
+        <li>
+          <%= link_to "商品一覧", items_index_path %>
+        </li>
         <li>
           <%= link_to "新規登録", new_customer_registration_path %>
         </li>
