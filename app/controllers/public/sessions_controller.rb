@@ -31,10 +31,10 @@ class Public::SessionsController < Devise::SessionsController
       ## 【処理内容3】
       #redirect_to customer_session_path
     end
-    
-    
+
+
   end
-  
+
   def after_sign_in_path_for(resource)
     public_homes_top_path
   end

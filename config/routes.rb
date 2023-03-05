@@ -41,7 +41,7 @@ Rails.application.routes.draw do
   end
   namespace :admin do
     #get 'homes/top'
-    #root to: "homes#top"
+    root to: "homes#top"
   end
   namespace :admin do
     #root :to => "devise/sessions#new"
@@ -54,9 +54,9 @@ Rails.application.routes.draw do
   # 管理者用
   # URL /admin/sign_in ...
   # rootをログイン画面に設定
-  devise_scope :admin do
-    root "admin/sessions#new"
-  end
+  #devise_scope :admin do
+   # root "admin/sessions#new"
+  #end
   
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"

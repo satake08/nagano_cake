@@ -22,7 +22,7 @@
           <%= link_to "会員一覧", admin_customers_index_path %>
         </li>
         <li>
-          <%= link_to "注文履歴一覧", admin_orders_show_path %>
+          <%= link_to "注文履歴一覧", admin_root_path %>
         </li>
         <li>
           <%= link_to "ジャンル一覧", admin_genres_index_path %>
@@ -45,7 +45,7 @@
           <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
         </li>
       <% else %>
-        <!--会員・管理者ログイン前ヘッダー-->
+      <!--会員・管理者ログイン前ヘッダー-->
         <li>
           <%= link_to "About", homes_about_path %>
         </li>
