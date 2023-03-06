@@ -1,5 +1,62 @@
 <h1>会員情報編集</h1>
-<p>会員情報入力欄(登録内容表示)</p>
-<p>会員ステータス有効/退会ラジオボタン</p>
+ <!--バリデーション-->
+  <%= render 'temp/errortext', obj: @customer %>
 
-<p><%= link_to '変更保存', admin_customers_show_path %></p>
+<%= form_with model: [:admin, @customer] do |f| %>
+<div class="form-group row">
+  <label for="inputId", class="col-sm-3 col-form-label">会員ID</label>
+  <div class="d-flex align-items-center"><%= @customer.id %></div>
+</div>
+
+<div class="form-group row">
+  <label for="inputNmame", class="col-sm-3 col-form-label">氏名</label>
+  <div class="col">
+    <%= f.text_field :last_name, id:"inputName", class:"col form-control ms-5" %>
+  </div>
+  <div class="col">
+    <%= f.text_field :first_name, id:"inputName", class:"col form-control" %>
+  </div>
+</div>
+
+<div class="form-group row">
+  <label for="inputNmamekana", class="col-sm-3 col-form-label">フリガナ</label>
+  <div class="col">
+    <%= f.text_field :last_name_kana, id:"inputNamekana", class:"col form-control" %>
+  </div>
+  <div class="col">
+    <%= f.text_field :first_name_kana, id:"inputNamekana", class:"col form-control" %>
+  </div>
+</div>
+
+<div class="form-group row">
+  <label for="inputPostalCode", class="col-sm-3 col-form-label">郵便番号</label>
+  <%= f.text_field :postal_code, id:"inputPostalCode", class:"col form-control" %>
+</div>
+
+<div class="form-group row">
+  <label for="inputAdress", class="col-sm-3 col-form-label">住所</label>
+  <%= f.text_field :address, id:"inputAdress", class:"col form-control" %>
+</div>
+
+<div class="form-group row">
+  <label for="inputTelephone", class="col-sm-3 col-form-label">電話番号</label>
+  <%= f.text_field :telephone_number, id:"inputTelephone", class:"col form-control" %>
+</div>
+
+<div class="form-group row">
+  <label for="inputEmail", class="col-sm-3 col-form-label">メールアドレス</label>
+  <%= f.text_field :email, id:"inputEmail", class:"col form-control" %>
+</div>
+
+<div class="form-group row">
+  <label for="inputCstatus", class="col-sm-3 col-form-label">会員ステータス</label>
+  <%= f.radio_button :is_deleted, false, id:"inputCstatus", class:"col form-control" %><p class = "col">有効</p>
+  <%= f.radio_button :is_deleted, true, id:"inputCstatus", class:"col form-control" %><p class = "col">退会</p>
+</div>
+<!--<p><= link_to '変更保存', admin_customers_show_path %></p>-->
+<div class="form-group row">
+  <label class="col-sm-3 col-form-label"></label>
+  <%= f.submit "変更を保存", class:"col-3 btn btn-success mx-auto mt-3" %>
+</div>
+
+<% end %>
