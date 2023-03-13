@@ -2,3 +2,37 @@
 <p>商品情報入力欄(登録内容表示)</p>
 
 <p><%= link_to '変更保存', admin_items_show_path %></p>
+
+    <h4>商品編集</h4>
+
+
+  <!--バリデーション-->
+  <%= render 'temp/errortext', obj: @item %>
+
+      <%= form_with model: [:admin ,@item] do |f| %>
+        <div class="form-group">
+          <label for="inputImage">商品画像</label>
+          <%= f.file_field :image, placeholder: "ファイルを選択", accept: "image/*", class:"form-control-file item_image"%>
+        </div>
+
+        <div class="form-group">
+          <label for="inputName">商品名</label>
+          <%= f.text_field :name, placeholder: "商品名", id:"inputName", class:"form-control item_name" %>
+        </div>
+
+        <div class="form-group">
+          <label for="inputIntroduction">商品説明</label>
+          <%= f.text_area :introduction, placeholder: "ここに説明文を記述します", id:"inputIntroduction", class:"form-control introduction"  %>
+        </div>
+
+        <!--ジャンル選択機能-->
+
+        <div class="form-group">
+          <label for="inputPrice">税抜価格</label>
+          <%= f.number_field :price, placeholder: "1000", id:"inputPrice", class:"form-control price"  %>
+        </div>
+
+        <!--販売ステータ選択機能-->
+
+        <%= f.submit "変更を保存", class:"btn btn-success" %>
+      <% end %>

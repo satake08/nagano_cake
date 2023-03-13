@@ -15,7 +15,7 @@
   </td>
   <td>
 <!--<p><= link_to '会員氏名', admin_customers_show_path %></p>-->
-<%= link_to admin_customer_path(customer.id) do %>
+<%= link_to admin_customers_show_path(customer.id) do %>
   <%= "#{customer.last_name + customer.first_name}" %>
 <% end %>
   </td>
