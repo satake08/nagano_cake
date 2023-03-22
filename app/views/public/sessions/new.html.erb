@@ -1,30 +1,56 @@
 <!--顧客ログイン-->
-<h4>ログイン</h4>
-<h5>会員の方はここからログイン</h5>
-<%= form_with model: @customer, url: customer_session_path do |f| %>
+<div class="container">
 
-  <div class="field">
-    <%= f.label :"メールアドレス" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="row">
+    <div class="col-md-3 mt-5">
+      <h4 class="text-dark text-center title_bar">ログイン</h4>
+    </div>
+    <div class="col-md-7 mt-5"></div>
   </div>
 
-  <div class="field">
-    <%= f.label :"パスワード" %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+  <div class="row">
+    <div class="col-md-4 mt-5 mb-3">
+      <h5 class="text-dark text-center title_bar">会員の方はここからログイン</h5>
+    </div>
+    <div class="col-md-6 mt-5"></div>
   </div>
 
-  <div class="actions">
-    <%= f.submit "ログイン" %>
+  <div class="row justify-content-md-center">
+    <div class="col-8">
+
+      <%= form_with model: @customer, url: customer_session_path do |f| %>
+
+        <div class="form-group row">
+          <label for="inputEmail", class="col-sm-4 col-form-label">メールアドレス</label>
+          <%= f.email_field :email, id:"inputEmail", placeholder: "sample@exanple.com",class:"col form-control" %>
+        </div>
+
+        <div class="form-group row">
+          <label for="inputPassward", class="col-sm-4 col-form-label">パスワード</label>
+          <%= f.password_field :password, id:"inputPassward", class:"col form-control" %>
+        </div>
+
+        <div class="form-group row">
+          <label for="inputPassward", class="col-sm-4 col-form-label"></label>
+          <%= f.submit "ログイン", class: "btn btn-primary btn-sm w-25" %>
+        </div>
+      <% end %>
+      <%= render "admin/shared/links" %>
+
+    </div>
   </div>
-<% end %>
 
-<%= render "public/shared/links" %><!--admin/shared/links-->
+  <div class="row">
+    <div class="col-md-4 mt-5 mb-3">
+      <h5 class="text-dark text-center title_bar">会員登録がお済でない方</h5>
+    </div>
+    <div class="col-md-6 mt-5"></div>
+  </div>
 
-
-
-      <h5>会員登録がお済でない方</h5>
-
-
+  <div class="row justify-content-md-center">
+    <div class="col-8">
       <p><%= link_to "こちら", new_customer_registration_path %>　から新規登録を行ってください。</p>
+    </div>
+  </div>
 
-
+</div>

@@ -1,7 +1,15 @@
-      <h4>注文履歴詳細</h4>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 mt-5">
+      <h4 class="text-dark text-center title_bar">注文履歴詳細</h4>
+    </div>
+    <div class="col-md-7 mt-5"></div>
+  </div>
 
-      <h4>注文情報</h4>
-      <table>
+  <div class="row mt-5">
+    <div class="col">
+      <h4 class="font-weight-bold">注文情報</h4>
+      <table class="table table-bordered">
         <tr>
           <th>注文日</th>
           <td><%= @order.created_at.to_s(:datetime_jp) %></td>
@@ -19,9 +27,11 @@
           <td><%= @order.payment_method_i18n %></td>
         </tr>
       </table>
+    </div>
 
-      <h4>請求情報</h4>
-      <table>
+    <div class="col">
+      <h4 class="font-weight-bold">請求情報</h4>
+      <table class="table table-bordered">
         <tr>
           <th>商品合計</th>
           <td><%= (@order.amount_paid - @order.shipping_cost).to_s(:delimited) %></td>
@@ -35,15 +45,19 @@
           <td><%= @order.amount_paid.to_s(:delimited) %></td>
         </tr>
       </table>
+    </div>
+  </div>
 
-      <h4>注文内容</h4>
-      <table>
+  <div class="row">
+    <div class="col">
+      <h4 class="font-weight-bold">注文内容</h4>
+      <table class="table table-bordered">
         <thead>
           <tr>
-            <th>商品</th>
-            <th>単価(税込)</th>
-            <th>個数</th>
-            <th>小計</th>
+            <th scope="col">商品</th>
+            <th scope="col">単価(税込)</th>
+            <th scope="col">個数</th>
+            <th scope="col">小計</th>
           </tr>
         </thead>
         <tbody>
@@ -57,3 +71,6 @@
           </tr>
         </tbody>
       </table>
+    </div>
+  </div>
+</div>

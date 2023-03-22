@@ -1,13 +1,17 @@
-<h1>商品編集</h1>
-<p>商品情報入力欄(登録内容表示)</p>
-
-<p><%= link_to '変更保存', admin_items_show_path %></p>
-
-    <h4>商品編集</h4>
-
+<div class="container">
+  <div class="row">
+    <div class="col-md-2 mt-5">
+      <h4 class="text-dark text-center title_bar">商品編集</h4>
+    </div>
+    <div class="col-md-3 mt-5"></div>
+    <div class="col-md-5 mt-5"></div>
+  </div>
 
   <!--バリデーション-->
   <%= render 'temp/errortext', obj: @item %>
+
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
 
       <%= form_with model: [:admin ,@item] do |f| %>
         <div class="form-group">
@@ -36,3 +40,6 @@
 
         <%= f.submit "変更を保存", class:"btn btn-success" %>
       <% end %>
+    </div>
+  </div>
+</div>

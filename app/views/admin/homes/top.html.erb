@@ -1,22 +1,51 @@
-<h1>注文履歴一覧</h1><!--(管理者トップ画面)-->
+<!--注文履歴一覧(管理者トップ画面)-->
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 mt-5">
+      <h4 class="title_bar text-dark text-center">注文履歴一覧</h4>
+    </div>
+    <div class="col-md-7 mt-5"></div>
+  </div>
 
-<!--全会員の注文履歴-->
-<tr>
-  <th>購入日時</th><!--注文日日付-->
-  <th>購入者</th>
-  <th>注文個数</th>
-  <th>注文ステータス</th>
-  <th colspan="4"></th>
-</tr>
-<% @orders.each do |order| %>
-<tr>
-  <td><%= link_to admin_order_path(order.id) do %><!--注文日日付-->
-      <%= order.create_at %>
-    <% end %></td>
-  <td><%= "#{order.customer.last_name + order.customer.first_name}" %></td><!--購入者-->
-  <td><%= order.order_items.count %></td><!--注文個数-->
-  <!--<td><= user.name %></td><!--注文ステータス-->
-</tr>
-<% end %>
+  <div class="row mt-3">
 
+    <div class="col-md-8 offset-md-1">
+      <table class="table">
+        <thead>
+            <tr>
+              <th>購入日時</th>
+              <th>購入者</th>
+              <th>注文個数</th>
+              <!--<th>注文ステータス</th>-->
+            </tr>
+        </thead>
+        <tbody>
+          <% @orders.each do |order| %>
+            <tr>
+              <td>
+                <!--create_at-->
+                <%= link_to admin_order_path(order.id) do %>
+                  <%= order.created_at.to_s(:datetime_jp) %>
+                <% end %>
+              </td>
+
+              <td>
+                <!--customer.name-->
+                <%= "#{order.customer.last_name + order.customer.first_name}" %>
+              </td>
+
+              <td>
+                <!--order.order_items.count-->
+                <%= order.order_items.count %>
+              </td>
+
+            </tr>
+          <% end %>
+
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
 <%= paginate @orders %>

@@ -10,4 +10,6 @@ Admin.create!(
   password: "toulavu08"
   )
   
+Item.create!(
   
+  )
